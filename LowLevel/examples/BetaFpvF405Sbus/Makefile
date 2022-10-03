@@ -10,7 +10,7 @@ ROOT         := ../../stm32f4
 STM_SRC_DIR  := stm/src
 HFSRC_DIR    := hfsrc
 OBJECT_DIR   := ./obj
-CMSIS_DIR    := $(ROOT)/lib/CMSIS
+CMSIS_DIR    := stm/lib/CMSIS
 INCLUDE_DIRS := $(STM_SRC_DIR) \
 	            $(HFSRC_DIR) \
                 $(STM_SRC_DIR)/startup
