@@ -1,2 +1,0 @@
-# STM32F405_MPU6000
-Reading from the MPU6000 IMU using the STM32F405 MCU
