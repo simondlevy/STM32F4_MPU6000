@@ -110,7 +110,6 @@ endif
 
 .DEFAULT_GOAL := hex
 
-#include $(ROOT)/make/csource.mk
 STM32_SRC = \
             serial_debug.c \
             bitbang.c \
@@ -162,7 +161,7 @@ CROSS_GDB   := $(ARM_SDK_PREFIX)gdb
 OBJCOPY     := $(ARM_SDK_PREFIX)objcopy
 OBJDUMP     := $(ARM_SDK_PREFIX)objdump
 SIZE        := $(ARM_SDK_PREFIX)size
-DFUSE-PACK  := $(ROOT)/utils/dfuse-pack.py
+DFUSE-PACK  := stm/utils/dfuse-pack.py
 
 #
 # Tool options.
