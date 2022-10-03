@@ -264,7 +264,6 @@ $(TARGET_ELF): $(TARGET_OBJS) \
 # C ===========================================================================
 
 $(OBJECT_DIR)/hardware_init.o: hardware_init.c \
-	  hardware_init.h \
       spi.h \
       exti.h \
       inverter.h \
@@ -294,7 +293,6 @@ $(OBJECT_DIR)/stm32clock.o: $(HFSRC_DIR)/stm32clock.c
 		$(HFSRC_DIR)/stm32clock.c
 
 $(OBJECT_DIR)/main.o: main.cpp \
-	  hardware_init.h \
 	  $(STM_SRC_DIR)/*.h \
 	  $(HFSRC_DIR)/*.h \
       $(HFSRC_DIR)/*/*.h \

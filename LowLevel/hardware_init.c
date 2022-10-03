@@ -32,8 +32,6 @@
 #include "timer.h"
 #include "usb_io.h"
 
-#include "hardware_init.h"
-
 #if defined (__cplusplus)
 extern "C" {
 #endif
