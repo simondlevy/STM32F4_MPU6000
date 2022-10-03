@@ -38,7 +38,6 @@ endif
 
 ########################################################
 
-# configure some directories that are relative to wherever ROOT_DIR is located
 TOOLS_DIR ?= /opt
 
 ARM_SDK_DIR ?= $(TOOLS_DIR)/gcc-arm-11.2-2022.02-x86_64-arm-none-eabi
@@ -78,7 +77,7 @@ endif
 
 # Search path for sources
 VPATH           := $(STM_SRC_DIR):$(STM_SRC_DIR)/startup
-USBFS_DIR       = $(ROOT)/lib/STM32_USB-FS-Device_Driver
+USBFS_DIR       = stm/lib/STM32_USB-FS-Device_Driver
 USBPERIPH_SRC   = $(notdir $(wildcard $(USBFS_DIR)/src/*.c))
 FATFS_DIR       = $(ROOT)/lib/FatFS
 FATFS_SRC       = $(notdir $(wildcard $(FATFS_DIR)/*.c))
