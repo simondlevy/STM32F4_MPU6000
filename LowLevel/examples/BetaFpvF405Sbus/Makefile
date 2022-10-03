@@ -79,7 +79,7 @@ endif
 VPATH           := $(STM_SRC_DIR):$(STM_SRC_DIR)/startup
 USBFS_DIR       = stm/lib/STM32_USB-FS-Device_Driver
 USBPERIPH_SRC   = $(notdir $(wildcard $(USBFS_DIR)/src/*.c))
-FATFS_DIR       = $(ROOT)/lib/FatFS
+FATFS_DIR       = stm/lib/FatFS
 FATFS_SRC       = $(notdir $(wildcard $(FATFS_DIR)/*.c))
 
 CSOURCES        := $(shell find $(STM_SRC_DIR) -name '*.c')
