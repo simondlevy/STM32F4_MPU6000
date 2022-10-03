@@ -5,7 +5,7 @@ TARGET    := STM32F405
 SERIAL_DEVICE ?= /dev/ttyACM0
 
 # Working directories
-ROOT         := ../../stm32f4
+#ROOT         := ../../stm32f4
 
 STM_SRC_DIR  := stm/src
 HFSRC_DIR    := hfsrc

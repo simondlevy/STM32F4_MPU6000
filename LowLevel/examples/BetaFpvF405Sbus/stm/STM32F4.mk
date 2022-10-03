@@ -5,8 +5,8 @@
 LD_SCRIPT = $(LINKER_DIR)/stm32_flash_f405_opbl.ld
 
 #CMSIS
-CMSIS_DIR      := $(ROOT)/lib/CMSIS
-STDPERIPH_DIR   = $(ROOT)/lib/STM32F4/Drivers/STM32F4xx_StdPeriph_Driver
+CMSIS_DIR      := stm/lib/CMSIS
+STDPERIPH_DIR   = stm/lib/STM32F4/Drivers/STM32F4xx_StdPeriph_Driver
 STDPERIPH_SRC   = $(notdir $(wildcard $(STDPERIPH_DIR)/src/*.c))
 EXCLUDES        = stm32f4xx_crc.c \
                   stm32f4xx_can.c \
@@ -31,9 +31,9 @@ MCU_FLASH_SIZE  := 1024
 
 STDPERIPH_SRC   := $(filter-out ${EXCLUDES}, $(STDPERIPH_SRC))
 
-USBCORE_DIR = $(ROOT)/lib/STM32_USB_Device_Library/Core
+USBCORE_DIR = stm/lib/STM32_USB_Device_Library/Core
 USBCORE_SRC = $(notdir $(wildcard $(USBCORE_DIR)/src/*.c))
-USBOTG_DIR  = $(ROOT)/lib/STM32_USB_OTG_Driver
+USBOTG_DIR  = stm/lib/STM32_USB_OTG_Driver
 USBOTG_SRC  = $(notdir $(wildcard $(USBOTG_DIR)/src/*.c))
 EXCLUDES    = usb_bsp_template.c \
               usb_conf_template.c \
@@ -42,17 +42,17 @@ EXCLUDES    = usb_bsp_template.c \
               usb_otg.c
 
 USBOTG_SRC  := $(filter-out ${EXCLUDES}, $(USBOTG_SRC))
-USBCDC_DIR  = $(ROOT)/lib/STM32_USB_Device_Library/Class/cdc
+USBCDC_DIR  = stm/lib/STM32_USB_Device_Library/Class/cdc
 USBCDC_SRC  = $(notdir $(wildcard $(USBCDC_DIR)/src/*.c))
 EXCLUDES    = usbd_cdc_if_template.c
 USBCDC_SRC  := $(filter-out ${EXCLUDES}, $(USBCDC_SRC))
-USBMSC_DIR  = $(ROOT)/lib/STM32_USB_Device_Library/Class/msc
+USBMSC_DIR  = stm/lib/STM32_USB_Device_Library/Class/msc
 USBMSC_SRC  = $(notdir $(wildcard $(USBMSC_DIR)/src/*.c))
 EXCLUDES    = usbd_storage_template.c
 USBMSC_SRC  := $(filter-out ${EXCLUDES}, $(USBMSC_SRC))
-USBHID_DIR  = $(ROOT)/lib/STM32_USB_Device_Library/Class/hid
+USBHID_DIR  = stm/lib/STM32_USB_Device_Library/Class/hid
 USBHID_SRC  = $(notdir $(wildcard $(USBHID_DIR)/src/*.c))
-USBWRAPPER_DIR  = $(ROOT)/lib/STM32_USB_Device_Library/Class/hid_cdc_wrapper
+USBWRAPPER_DIR  = stm/lib/STM32_USB_Device_Library/Class/hid_cdc_wrapper
 USBWRAPPER_SRC  = $(notdir $(wildcard $(USBWRAPPER_DIR)/src/*.c))
 VPATH       := $(VPATH):$(USBOTG_DIR)/src:$(USBCORE_DIR)/src:$(USBCDC_DIR)/src:$(USBMSC_DIR)/src:$(USBHID_DIR)/src:$(USBWRAPPER_DIR)/src
 
@@ -65,10 +65,10 @@ DEVICE_STDPERIPH_SRC := $(STDPERIPH_SRC) \
                         $(USBMSC_SRC)
 
 #CMSIS
-VPATH           := $(VPATH):$(CMSIS_DIR)/Core/Include:$(ROOT)/lib/STM32F4/Drivers/CMSIS/Device/ST/STM32F4xx
+VPATH           := $(VPATH):$(CMSIS_DIR)/Core/Include:stm/lib/STM32F4/Drivers/CMSIS/Device/ST/STM32F4xx
 
 CMSIS_SRC       := $(notdir $(wildcard $(CMSIS_DIR)/CoreSupport/*.c \
-                   $(ROOT)/lib/STM32F4/Drivers/CMSIS/Device/ST/STM32F4xx/*.c))
+                   stm/lib/STM32F4/Drivers/CMSIS/Device/ST/STM32F4xx/*.c))
 INCLUDE_DIRS    := $(INCLUDE_DIRS) \
                    $(STDPERIPH_DIR)/inc \
                    $(USBOTG_DIR)/inc \
@@ -79,7 +79,7 @@ INCLUDE_DIRS    := $(INCLUDE_DIRS) \
                    $(USBMSC_DIR)/inc \
                    $(USBFS_DIR)/inc \
                    $(CMSIS_DIR)/Core/Include \
-                   $(ROOT)/lib/STM32F4/Drivers/CMSIS/Device/ST/STM32F4xx \
+                   stm/lib/STM32F4/Drivers/CMSIS/Device/ST/STM32F4xx \
                    $(STM_SRC_DIR)/vcpf4
 
 ifneq ($(filter SDCARD_SPI,$(FEATURES)),)
@@ -119,5 +119,5 @@ VCP_SRC = \
             serial_usb_vcp.c \
             usb_io.c
 
-DSP_LIB := $(ROOT)/lib/CMSIS/DSP
+DSP_LIB := stm/lib/CMSIS/DSP
 DEVICE_FLAGS += -DARM_MATH_MATRIX_CHECK -DARM_MATH_ROUNDING -D__FPU_PRESENT=1 -DUNALIGNED_SUPPORT_DISABLE -DARM_MATH_CM4
