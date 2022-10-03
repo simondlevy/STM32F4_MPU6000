@@ -4,13 +4,13 @@
 #define FEATHER
 
 #ifdef FEATHER
-static const uint8_t CS_PIN   = 0x0A;
+static const uint8_t CS_PIN  = 10;
 #define spi1 SPI
 #else
-static const uint8_t SCLK_PIN = PA_5;
-static const uint8_t MISO_PIN = PA_6;
-static const uint8_t MOSI_PIN = PA_7;
-static const uint8_t CS_PIN   = PA_4;
+static const uint8_t SCLK_PIN = PA_5;   // ???
+static const uint8_t MISO_PIN = PA_6;   // ??? 
+static const uint8_t MOSI_PIN = PA_7;   // ??? 
+static const uint8_t CS_PIN   = PA_4;   // ???
 SPIClass spi1(MOSI_PIN, MISO_PIN, SCLK_PIN);
 #endif
 
