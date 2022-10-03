@@ -14,7 +14,8 @@ CMSIS_DIR    := $(ROOT)/lib/CMSIS
 INCLUDE_DIRS := $(STM_SRC_DIR) \
 	            $(HFSRC_DIR) \
                 $(STM_SRC_DIR)/startup
-LINKER_DIR   := $(ROOT)/link
+#LINKER_DIR   := $(ROOT)/link
+LINKER_DIR   := stm/link
 
 ## V                 : Set verbosity level based on the V= parameter
 ##                     V=0 Low
