@@ -1,7 +1,7 @@
 #include <SPI.h>
 
-// Un-comment for generic STM32F405
-//#define FEATHER
+// Comment out for generic STM32F405
+#define FEATHER
 
 #ifdef FEATHER
 static const uint8_t CS_PIN   = 0x0A;
@@ -19,14 +19,6 @@ static const uint8_t REG_PWR_MGMT_1 = 0x6B;
 static const uint8_t REG_WHO_AM_I   = 0x75;
 
 static uint8_t _id;
-
-static void writeRegister(const uint8_t reg, const uint8_t val)
-{
-    digitalWrite(CS_PIN, LOW);
-    spi1.transfer(reg);
-    spi1.transfer(val);
-    digitalWrite(CS_PIN, HIGH);
-}
 
 static uint8_t readRegister(const uint8_t addr)
 {
