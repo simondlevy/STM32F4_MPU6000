@@ -20,6 +20,18 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#include "spi.h"
+#include "exti.h"
+#include "inverter.h"
+#include "io.h"
+#include "pinio.h"
+#include "serialdev.h"
+#include "serial_uart.h"
+#include "spi.h"
+#include "systemdev.h"
+#include "timer.h"
+#include "usb_io.h"
+
 #include "hardware_init.h"
 
 #if defined (__cplusplus)
@@ -28,6 +40,19 @@ extern "C" {
 
 void hardwareInit(void)
 {
+    systemInit();
+    ioInitGlobal();
+    extiInit();
+    systemClockSetHSEValue(8000000);
+    OverclockRebootIfNecessary(0);
+    timerInit();
+    serialUartPinConfigure();
+    serialInit(-1);
+    inverterInit();
+    usbCableDetectInit();
+    systemInitUnusedPins();
+    pinioInit();
+    timerStart();
 }
 
 #if defined (__cplusplus)

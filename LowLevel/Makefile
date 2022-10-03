@@ -254,6 +254,7 @@ $(TARGET_DFU): $(TARGET_HEX)
 	$(V1) $(PYTHON) $(DFUSE-PACK) -i $< $@
 
 $(TARGET_ELF): $(TARGET_OBJS) \
+		  $(OBJECT_DIR)/hardware_init.o \
 		  $(OBJECT_DIR)/main.o \
 		  $(OBJECT_DIR)/stm32clock.o \
 		  $(OBJECT_DIR)/dshot_packet.o
@@ -261,6 +262,22 @@ $(TARGET_ELF): $(TARGET_OBJS) \
 	$(V1) $(CROSS_CXX) -o $@ $(filter-out %.ld,$^) $(LD_FLAGS)
 
 # C ===========================================================================
+
+$(OBJECT_DIR)/hardware_init.o: hardware_init.c \
+	  hardware_init.h \
+      spi.h \
+      exti.h \
+      inverter.h \
+      io.h \
+      pinio.h \
+      serialdev.h \
+      serial_uart.h \
+      systemdev.h \
+      timer.h \
+      usb_io.h
+	@echo gcc hardware_init.c
+	$(V1) $(CROSS_CC) -c -o $(OBJECT_DIR)/hardware_init.o $(CFLAGS) \
+		hardware_init.c
 
 $(OBJECT_DIR)/mpu6000.o: $(HFSRC_DIR)/imus/softquat/*.*
 	@echo imus/softquat/mpu6000.cpp

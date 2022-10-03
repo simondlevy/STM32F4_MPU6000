@@ -44,6 +44,10 @@
 #include "usb_io.h"
 
 
+extern "C" {
+    void hardwareInit(void);
+}
+
 #include <vector>
 using namespace std;
 
@@ -60,19 +64,7 @@ static void imuInterruptHandler(void)
 
 int main(void)
 {
-    systemInit();
-    ioInitGlobal();
-    extiInit();
-    systemClockSetHSEValue(8000000);
-    OverclockRebootIfNecessary(0);
-    timerInit();
-    serialUartPinConfigure();
-    serialInit(-1);
-    inverterInit();
-    usbCableDetectInit();
-    systemInitUnusedPins();
-    pinioInit();
-    timerStart();
+    hardwareInit();
 
     spiInit(
             0x15,  // sck  = PA5
