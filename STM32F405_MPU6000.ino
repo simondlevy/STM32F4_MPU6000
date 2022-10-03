@@ -7,18 +7,15 @@
 static const uint8_t CS_PIN   = 0x0A;
 #define spi1 SPI
 #else
-static const uint8_t SCLK_PIN = 0x15;
-static const uint8_t MISO_PIN = 0x16;
-static const uint8_t MOSI_PIN = 0x17;
-static const uint8_t CS_PIN   = 0x14;
+static const uint8_t SCLK_PIN = PA_5;
+static const uint8_t MISO_PIN = PA_6;
+static const uint8_t MOSI_PIN = PA_7;
+static const uint8_t CS_PIN   = PA_4;
 SPIClass spi1(MOSI_PIN, MISO_PIN, SCLK_PIN);
 #endif
 
-
 static const uint8_t REG_PWR_MGMT_1 = 0x6B;
 static const uint8_t REG_WHO_AM_I   = 0x75;
-
-static uint8_t _id;
 
 static uint8_t readRegister(const uint8_t addr)
 {
@@ -28,6 +25,8 @@ static uint8_t readRegister(const uint8_t addr)
     digitalWrite(CS_PIN, HIGH);
     return result;
 }
+
+static uint8_t _id;
 
 void setup(void)
 {
@@ -52,6 +51,7 @@ void setup(void)
 
 void loop(void)
 {
+    Serial.print("Should be 0x68: 0x");
     Serial.println(_id, HEX);
-    delay(200); 
+    delay(500); 
 }
