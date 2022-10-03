@@ -6,10 +6,9 @@ SERIAL_DEVICE ?= /dev/ttyACM0
 
 # Working directories
 ROOT         := ../../stm32f4
-#HFSRC_DIR    := ../../src
-HFSRC_DIR    := hfsrc
-STM_SRC_DIR  := $(ROOT)/src
 
+STM_SRC_DIR  := stmsrc
+HFSRC_DIR    := hfsrc
 OBJECT_DIR   := ./obj
 CMSIS_DIR    := $(ROOT)/lib/CMSIS
 INCLUDE_DIRS := $(STM_SRC_DIR) \
